@@ -138,7 +138,20 @@ require 'bigdump.php'
                 <!-- Display Comments -->
                 <h6>Comments</h6>
                 <?php
-                $stmt = $pdo->prepare('SELECT * FROM comments WHERE post_id = ? ORDER BY created_at DESC');
+                $stmt = $pdo->prepare('SELECT 
+            comments.id AS id, 
+            comments.content AS content, 
+            comments.created_at AS created_at, 
+            users.username AS username
+        FROM 
+            comments
+        JOIN 
+            users ON comments.user_id = users.id
+        WHERE 
+            comments.post_id = ?
+        ORDER BY 
+            comments.created_at DESC'
+   );
                 $stmt->execute([$post['id']]);
                 $comments = $stmt->fetchAll();
                 ?>
@@ -147,7 +160,7 @@ require 'bigdump.php'
                 <?php else: ?>
                     <?php foreach ($comments as $comment): ?>
                         <div class="mb-2">
-                            <strong><?= htmlspecialchars($post['username']) ?>:</strong>
+                            <strong><?= htmlspecialchars($comment['username']) ?>:</strong>
                             <p><?= nl2br(htmlspecialchars($comment['content'])) ?></p>
                             <small class="text-muted">Posted on <?= htmlspecialchars($comment['created_at']) ?></small>
                         </div>

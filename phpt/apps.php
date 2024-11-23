@@ -18,7 +18,21 @@ require 'bigdump.php';
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <link href="assets/css/style.css" rel="stylesheet">
-
+<style>
+    .card{
+       
+        max-width:50%;
+    }
+    .scrollable-div {
+    width: 100%; /* Set desired width */
+    max-height: 300px; /* Set desired maximum height */
+    overflow-y: scroll; /* Adds vertical scrolling */
+    overflow-x: hidden; /* Hide horizontal scrolling */
+    border: 1px solid #ddd; /* Optional: Add a border for clarity */
+    padding: 10px; /* Optional: Add some padding */
+    background-color: #f8f9fa; /* Optional: Light gray background */
+}
+</style>
 </head>
 <body>
      <!-- Header -->
@@ -39,15 +53,15 @@ require 'bigdump.php';
     </header>
 </div>
   <!-- Main Section -->
-  <main class="container my-5">
+  <main class="container my-2">
     <div class="row">
       <!-- Linked Card -->
       <div class="col-md-4">
         <div class="card shadow-sm">
-          <img src="/img/gut.jpeg" class="card-img-top" alt="Quiz Thumbnail">
-          <div class="card-body">
-            <h5 class="card-title">Gut Type Quiz</h5>
-            <p class="card-text">Take this quiz to find out more about your gut health!</p>
+          <img src="img/gut.jpeg" class="card-img-top" alt="Quiz Thumbnail">
+          <div class="card-body scrollable-div">
+            <h5 class="card-title">What Gut Type are you?</h5>
+            
             <a href="apps/guttype/index.html" class="btn btn-primary">Take the Quiz</a>
           </div>
         </div>
